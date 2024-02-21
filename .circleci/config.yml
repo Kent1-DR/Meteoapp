@@ -25,18 +25,26 @@ jobs:
       - run:
           name: Update / upgrade and install curl
           command: sudo apt update && sudo apt install curl
+
+      - run:
+          name: Install dependencies
+          command: npm install
       
+      - run:
+          name: Install Jest
+          command: npm install --save-dev jest
+
       - run:
           name: docker build
           command: docker build -t meteoapp .
 
       - run:
           name: docker run
-          command:  docker run -d -p 5500:5500 meteoapp
+          command: docker run -d -p 5500:5500 meteoapp
   
       - run:
           name: docker wait
-          command:  sleep 10
+          command: sleep 10
   
       - run:
           name: connect to dockerhub
