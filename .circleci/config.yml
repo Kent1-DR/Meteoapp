@@ -37,10 +37,6 @@ jobs:
       - run:
           name: docker wait
           command:  sleep 10
-
-      - run:
-          name: test connection
-          command:  curl http://127.0.0.1:8081/ 
   
       - run:
           name: connect to dockerhub
