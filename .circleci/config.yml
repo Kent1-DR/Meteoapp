@@ -11,10 +11,10 @@ jobs:
   test:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/executor-intro/ & https://circleci.com/docs/configuration-reference/#executor-job
-    docker:
+    machine:
       # Specify the version you desire here
       # See: https://circleci.com/developer/images/image/cimg/base
-      - image: cimg/base:current
+      - image: ubuntu-2204:2022.04.2
 
     # Add steps to the job
     # See: https://circleci.com/docs/jobs-steps/#steps-overview & https://circleci.com/docs/configuration-reference/#steps
@@ -23,37 +23,35 @@ jobs:
       - checkout
       # Replace this with a real test runner invocation
       - run:
-          name: Run tests
-          command: echo 'replace me with real tests!' && false
-  build:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      # Replace this with steps to build a package, or executable
+          name: Update / upgrade and install curl
+          command: sudo apt update && sudo apt upgrade && sudo apt install curl
+      
       - run:
-          name: Build an artifact
-          command: touch example.txt
-      - store_artifacts:
-          path: example.txt
-  deploy:
-    docker:
-      - image: cimg/base:current
-    steps:
-      # Replace this with steps to deploy to users
-      - run:
-          name: deploy
-          command: "#e.g. ./deploy.sh"
+          name: docker build
+          command: docker build -t meteoapp .
 
-# Orchestrate jobs using workflows
-# See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
+      - run:
+          name: docker run
+          command:  docker run -d -p 5500:5500 meteoapp
+  
+      - run:
+          name: docker wait
+          command:  sleep 10
+
+      - run:
+          name: test connection
+          command:  curl http://127.0.0.1:5500/ 
+  
+      - run:
+          name: connect to dockerhub
+          command: echo "$DOCKERPASSWORD" | docker login -u king12quentin --password-stdin
+
+      - run:
+          name: upload to dockerhub
+          command: docker tag meteoapp "king12quentin/meteoapp" && docker push "king12quentin/meteoapp"
+
+
 workflows:
-  example:
+  build:
     jobs:
       - test
-      - build:
-          requires:
-            - test
-      - deploy:
-          requires:
-            - test
