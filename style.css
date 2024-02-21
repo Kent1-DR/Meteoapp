@@ -34,3 +34,9 @@ form input[type="search"] {
         flex-direction: column; /* Pour passer à une disposition en colonne sur les petits écrans */
     }
 }
+
+.vent, .soleil, .temperature {
+    border: 2px solid black;
+    padding: 5px; /* Espacement à l'intérieur du cadre */
+}
+

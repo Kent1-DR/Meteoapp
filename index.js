@@ -51,6 +51,6 @@ formsubmit.addEventListener("submit", async (event) => {
   } catch (err) {
     console.error(err);
 
-    errormessage.innerHTML = `Failed to fetch weather information, <br> Enter Correct Location`; // Shows an error message if the fetch fails
+    errormessage.innerHTML = `Impossible d'afficher les infos météo, <br> Entrer une ville existante`; // Shows an error message if the fetch fails
   }
 });
