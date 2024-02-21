@@ -14,7 +14,7 @@ jobs:
     machine:
       # Specify the version you desire here
       # See: https://circleci.com/developer/images/image/cimg/base
-      - image: ubuntu-2204:2022.04.2
+      image: ubuntu-2204:2022.04.2
 
     # Add steps to the job
     # See: https://circleci.com/docs/jobs-steps/#steps-overview & https://circleci.com/docs/configuration-reference/#steps
