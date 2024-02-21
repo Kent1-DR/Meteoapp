@@ -5,13 +5,12 @@ FROM node:14
 WORKDIR ./
 
 # Copier les fichiers de l'application dans le conteneur
-COPY . .
+COPY package*.json ./
 
-# Installer les dépendances de l'application
 RUN npm install
-
+COPY . .
 # Commande pour démarrer l'application
-expose 5500
+expose 8081
 CMD npm start
 
 
