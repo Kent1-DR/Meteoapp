@@ -1,0 +1,36 @@
+/* Pour aligner les inputs "vent", "soleil" et "temperature" côte à côte */
+#info {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espace entre les éléments */
+    flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */
+}
+
+/* Pour aligner le search juste en dessous du titre "Météo" */
+.city-heading {
+    margin-bottom: 10px; /* Espace entre le titre et le search */
+}
+
+/* Pour styliser l'input search */
+form input[type="search"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+}
+
+/* Pour ajuster les détails en dessous des titres */
+#details {
+    margin-top: 10px;
+}
+
+/* Pour que les détails soient affichés en colonne */
+#details p {
+    margin: 5px 0;
+}
+
+/* Pour que les éléments soient responsifs */
+@media (max-width: 600px) {
+    #info {
+        flex-direction: column; /* Pour passer à une disposition en colonne sur les petits écrans */
+    }
+}
