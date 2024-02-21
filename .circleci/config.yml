@@ -28,11 +28,11 @@ jobs:
 
       - run:
           name: Install dependencies
-          command: npm install
+          command: npm install && npm install --save-dev jest --force
       
       - run:
           name: Install Jest
-          command: npm install --save-dev jest
+          command: npm install --save-dev jest --force
 
       - run:
           name: docker build
