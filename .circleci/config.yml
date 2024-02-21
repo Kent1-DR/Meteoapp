@@ -24,7 +24,7 @@ jobs:
       # Replace this with a real test runner invocation
       - run:
           name: Update / upgrade and install curl
-          command: sudo apt update && sudo apt upgrade && sudo apt install curl
+          command: sudo apt update && sudo apt install curl
       
       - run:
           name: docker build
