@@ -21,6 +21,10 @@ jobs:
     - name: Installer les dépendances
       run: npm install
 
+    - run:
+      name: Install Jest
+      command: npm install --save-dev jest --force
+
     - name: Exécution des tests
       run: npm test
 
