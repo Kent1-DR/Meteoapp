@@ -1,5 +1,5 @@
 # Utilisation de l'image Node.js officielle en tant que base
-FROM ubuntu:latest
+FROM node:14
 
 # Définir le répertoire de travail dans le conteneur
 WORKDIR ./
