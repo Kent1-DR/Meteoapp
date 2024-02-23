@@ -20,7 +20,7 @@ jobs:
 
  
     - name: Update / upgrade 
-      run: sudo apt update && sudo apt upgrade
+      run: sudo apt update
 
 
     - name: Installer les dépendances
@@ -38,4 +38,3 @@ jobs:
     - name: upload to dockerhub
       run: docker tag meteoapp "king12quentin/meteoapp" && docker push "king12quentin/meteoapp"
 
-      
