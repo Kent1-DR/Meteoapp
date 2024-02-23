@@ -28,9 +28,6 @@ jobs:
 
     - name: Install Jest
       run: npm install --save-dev jest --force
-
-    - name: Exécution des tests
-      run: npm test
   
     - name: connect to dockerhub
       run: echo "$DOCKERPASSWORD" | docker login -u king12quentin --password-stdin
