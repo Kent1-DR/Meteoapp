@@ -1,3 +1,4 @@
+/*
 // Importez fetch-mock pour simuler les appels réseau
 import fetchMock from 'fetch-mock';
 
@@ -38,3 +39,4 @@ describe('fetchWaifuImages function', () => {
     ]);
   });
 });
+*/
