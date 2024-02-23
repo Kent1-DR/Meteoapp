@@ -30,8 +30,8 @@ jobs:
       run: npm install --save-dev jest --force
   
     - name: connect to dockerhub
-      run: docker login -u king12quentin --password="$DOCKERPASSWORD"
+      run: docker login -u king12quentin --password="$DOCKERPASS"
 
     - name: upload to dockerhub
-      run: docker tag meteoapp "king12quentin/meteoapp" && docker push "king12quentin/meteoapp"
+      run: docker tag kent2 "king12quentin/kent2" && docker push "king12quentin/kent2"
 
