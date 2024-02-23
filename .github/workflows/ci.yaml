@@ -38,8 +38,4 @@ jobs:
     - name: upload to dockerhub
       run: docker tag meteoapp "king12quentin/meteoapp" && docker push "king12quentin/meteoapp"
 
-
-workflows:
-  build:
-    jobs:
-      - test
+      
