@@ -2,7 +2,7 @@
 FROM node:14
 
 # Définir le répertoire de travail dans le conteneur
-WORKDIR ./
+WORKDIR ./app
 
 # Copier les fichiers de l'application dans le conteneur
 COPY package*.json ./
@@ -10,7 +10,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 # Commande pour démarrer l'application
-expose 8081
+EXPOSE 8282
 CMD npm start
 
 

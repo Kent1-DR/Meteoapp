@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - featureNils
+      - main
 
 jobs:
   build:
@@ -18,6 +18,11 @@ jobs:
       with:
         node-version: '14'
 
+ 
+    - name: Update / upgrade 
+      run: sudo apt update && sudo apt upgrade
+
+
     - name: Installer les dépendances
       run: npm install
 
@@ -26,17 +31,15 @@ jobs:
 
     - name: Exécution des tests
       run: npm test
+  
+    - name: connect to dockerhub
+      run: echo "$DOCKERPASSWORD" | docker login -u king12quentin --password-stdin
 
-    - name: Construction et publication Docker
-      if: success()
-      run: |
-        # Commandes pour dockeriser l'application
-        # Assurez-vous d'ajouter les tags en fonction du type de build
+    - name: upload to dockerhub
+      run: docker tag meteoapp "king12quentin/meteoapp" && docker push "king12quentin/meteoapp"
 
-        docker build -t mon_application:latest .
-        docker tag mon_application:latest mon_application:v1 # Exemple de tagging
-        # Ajoutez d'autres étapes de taggage si nécessaire
 
-        docker push mon_application:latest
-        docker push mon_application:v1
-        # Assurez-vous de pusher les images Docker dans le registre approprié
+workflows:
+  build:
+    jobs:
+      - test
