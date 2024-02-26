@@ -30,7 +30,7 @@ jobs:
       run: npm install --save-dev jest --force
   
     - name: connect to dockerhub
-      run: docker login -u king12quentin --password="$DOCKERPASS"
+      run: sudo docker login -u king12quentin -p ${{ secrets.SECRET }}
 
     - name: upload to dockerhub
       run: docker tag kent2 "king12quentin/kent2" && docker push "king12quentin/kent2"
