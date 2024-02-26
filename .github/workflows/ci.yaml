@@ -33,7 +33,7 @@ jobs:
       run: docker build -t meteoappfinal .
 
     - name: Docker run
-      run: docker run -p 8282:8282 meteoappfinal
+      run: docker run -d -p 8282:8282 meteoappfinal
 
     - name: connect to dockerhub
       run: sudo docker login -u king12quentin -p ${{ secrets.SECRET }}
