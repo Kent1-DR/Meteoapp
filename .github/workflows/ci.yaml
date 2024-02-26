@@ -30,12 +30,12 @@ jobs:
       run: npm install --save-dev jest --force
   
     - name: Docker
-      run: docker build -t meteoappfinal .
+      run: sudo docker build -t meteoappfinal .
 
     - name: Docker run
-      run: docker run -d -p 8282:8282 meteoappfinal
+      run: sudo docker run -d -p 8282:8282 meteoappfinal
 
     - name: connect and upload to dockerhub
-      run: sudo docker login -u king12quentin -p ${{ secrets.SECRET }} && docker tag meteoappfinal "king12quentin/meteoappfinal" && docker push "king12quentin/meteoappfinal"
+      run: sudo docker login -u king12quentin -p ${{ secrets.SECRET }} && sudo docker tag meteoappfinal "king12quentin/meteoappfinal" && sudo docker push "king12quentin/meteoappfinal"
 
 
