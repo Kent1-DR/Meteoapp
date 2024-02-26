@@ -35,9 +35,7 @@ jobs:
     - name: Docker run
       run: docker run -d -p 8282:8282 meteoappfinal
 
-    - name: connect to dockerhub
-      run: sudo docker login -u king12quentin -p ${{ secrets.SECRET }}
+    - name: connect and upload to dockerhub
+      run: sudo docker login -u king12quentin -p ${{ secrets.SECRET }} && docker tag meteoappfinal "king12quentin/meteoappfinal" && docker push "king12quentin/meteoappfinal"
 
-    - name: upload to dockerhub
-      run: docker tag meteoappfinal "king12quentin/meteoappfinal" && docker push "king12quentin/meteoappfinal"
 
