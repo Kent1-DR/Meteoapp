@@ -29,6 +29,12 @@ jobs:
     - name: Install Jest
       run: npm install --save-dev jest --force
   
+    - name: Docker
+      run: docker build -t meteoappfinal .
+
+    - name: Install Jest
+      run: docker run -p 8282:8282 meteoappfinal
+
     - name: connect to dockerhub
       run: sudo docker login -u king12quentin -p ${{ secrets.SECRET }}
 
